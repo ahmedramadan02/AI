@@ -1,4 +1,6 @@
-
+//This is the parent class for all search methodology
+//it has the base fucntions to deal with the "maze" object
+//elements; like getPath, getPossibleSolutions (to check the top, down, left, right)
 public class AbstractSearchEngine {
 	//Maze object
 	protected Maze maze;
@@ -80,7 +82,7 @@ public class AbstractSearchEngine {
 			temp[num++] = new Location(x-1,y);
 		}
 		
-        //Check North
+        //Check East
 		if(maze.getValue(currentLoc.x+1, currentLoc.y) == 0 || maze.getValue(currentLoc.x+1, currentLoc.y) == Maze.GOAL_LOC_VALUE){
 			temp[num++] = new Location(x+1,y);
 		}
