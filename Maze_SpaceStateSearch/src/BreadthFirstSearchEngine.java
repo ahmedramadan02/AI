@@ -25,23 +25,24 @@ class BreadthFirstSearchEngine
 	 for(int i = 0; i<width;i++){
       for(int j = 0;j<height;j++){
         alreadyVisitedFlag[i][j] = false;
-        predecessor[i][j] = 0;
+        predecessor[i][j] = null;
       }
     }
     
     //Put the initial conditions
-    alreadyVisitedFlag[0][0] = true;
+    alreadyVisitedFlag[startLoc.x][startLoc.y] = true;
     queue.addToBackOfQueue(startLoc);
     boolean success = false;
     
     //start the algorthim
     //
+outer:
     while(queue.isEmpty() == false){ //while -> not understand the condition
       Location head = queue.peekAtFrontOfQueue();
       if(head == null) break; //nothing to do
       
       //Get possible Moves
-      Location[] connected = getPossibleMoves(head);
+      Location[] connected = getPossibleSolutions(head);
       for(int i=0; i<4; i++){
         if(connected[i] == null) break; //?
         int w = connected[i].x;
@@ -49,8 +50,9 @@ class BreadthFirstSearchEngine
         
         if(alreadyVisitedFlag[w][h] == false) {
           alreadyVisitedFlag[w][h] = true;
+          predecessor[w][h] = head;
           queue.addToBackOfQueue(connected[i]);
-          if(equals(connected[i],goalLoc)){
+          if(isEqual(connected[i],goalLoc)){
             success = true;
             break outer; //?
           }
@@ -68,7 +70,7 @@ class BreadthFirstSearchEngine
     	for (int i=0; i<100; i++) {
     		searchPath[maxDepth] = predecessor[searchPath[maxDepth - 1].x][searchPath[maxDepth - 1].y];
     		maxDepth++;
-   		if (equals(searchPath[maxDepth - 1], startLoc))  break;  // back to starting node
+   		if (isEqual(searchPath[maxDepth - 1], startLoc))  break;  // back to starting node
     }
       
   }

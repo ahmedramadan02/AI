@@ -1,7 +1,7 @@
 
 public class Location {
-	protected int x;
-	protected int y;
+	int x;
+	int y;
 	
 	public Location(int x, int y){
 		this.x = x;

@@ -1,0 +1,33 @@
+http://www.cs.ubc.ca/~kevinlb/teaching/cs322%20-%202009-10/Lectures/Search1.pdf
+http://www.cs.ubc.ca/~kevinlb/teaching/cs322%20-%202009-10/Lectures/Search2.pdf
+
+Search problem:
+----------=-
+A search problem is defined by
+- A set of states
+- A start state
+- A goal state or goal test
+		- a boolean function which tells us whether a given state is a
+		  goal state
+A successor function
+- a mapping from a state to a set of new states
+
+Graph Search
+Graph (definition)
+A graph consists of
+- a set N of nodes;
+- a set A of ordered pairs of nodes, called arcs or edges.
+
+Node n2 is a neighbor of n1 if there is an arc from n1 to n2.
+i.e., if hn1, n2i ∈ A
+
+Path (definition)
+A path is a sequence of nodes hn0, n1, . . . , nki such that
+hni−1, nii ∈ A.
+Definition (solution)
+
+Solution
+Given a start node and a set of goal nodes, a solution is a path
+from the start node to a goal node.
+
+

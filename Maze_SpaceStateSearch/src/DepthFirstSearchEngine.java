@@ -13,7 +13,7 @@ class DepthFirstSearchEngine extends AbstractSearchEngine {
     
     //get all possibleSolution and then iterate on it
     //and under this iterate for everyone (recursion on that location!)
-    Location[] moves = getPossibleMoves(loc);
+    Location[] moves = getPossibleSolutions(loc);
     for (int i=0; i<4; i++){
       if(moves[i] == null) break; //out of scope 
       
@@ -21,8 +21,8 @@ class DepthFirstSearchEngine extends AbstractSearchEngine {
       //check if goal item or not
       //1. if goalLoc ok success
       //2. if not keep looking and get possible solution for this
+      searchPath[depth] = moves[i]; //the forgotten line !!!!
       if(isEqual(moves[i],goalLoc)){
-        sucess = true;
         System.out.println("Found the goal at " + moves[i].x +
                                    ", " + moves[i].y);
         isSearching = false;
@@ -34,6 +34,5 @@ class DepthFirstSearchEngine extends AbstractSearchEngine {
       }
       }
       return;
-    
   }
 }

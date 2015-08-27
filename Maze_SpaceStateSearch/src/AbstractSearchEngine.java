@@ -11,7 +11,7 @@ public class AbstractSearchEngine {
     protected Location [] searchPath = null;
     protected int pathCount;
     protected int maxDepth;
-    protected Location startLoc, goalLoc, currentLoc;
+    protected Location startLoc, goalLoc, currentLoc; //the curren location is related directly to this class
     protected boolean isSearching = true;
 	
 	//Constructor
@@ -39,7 +39,7 @@ public class AbstractSearchEngine {
 		if(searchPath == null){
 			searchPath = new Location[1000];
 			for(int i = 0;i<1000;i++){
-				searchPath[1000] = new Location();
+				searchPath[i] = new Location();
 			}
 			
 			//Set the start location

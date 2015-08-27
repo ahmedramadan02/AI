@@ -24,7 +24,7 @@ public class Maze {
 		maze = new short[width+2][height+2];
 		//initiate the maze objects
 		for(int i = 0; i<width+2; i++){
-			for(int j=0;j<height; j++){
+			for(int j=0;j<height+2; j++){
 				maze[i][j] = 0;
 			}
 		}
@@ -39,8 +39,8 @@ public class Maze {
 		}
 		
 		//Randomize the obstacles -> building the maze obstacles
-        int max_obsticles = (width * height) / 3;
-        for (int i=0; i<max_obsticles; i++) {
+        int max_obstacles = (width * height) / 3;
+        for (int i=0; i<max_obstacles; i++) {
             int x = (int)(Math.random()*width);
             int y = (int)(Math.random()*height);
             setValue(x, y, OBSTACLE);
@@ -53,16 +53,17 @@ public class Maze {
         setValue(0, 0, (short)0);
        
        // Specify the goal location
+       // its a fucntion of width and height
        goalLoc.x = width - 1;
        goalLoc.y = height - 1;
        setValue(width - 1, height - 1, GOAL_LOC_VALUE);
 	}
 
 	//SET and GET value
-	public void setValue(int x, int y, short obstacle) { maze[x][y] = obstacle; }
-	public short getValue(int x, int y){ return maze[x][y]; }
+    synchronized public short getValue(int x, int y) { return maze[x+1][y+1]; }
+    synchronized public void setValue(int x, int y, short value) { maze[x+1][y+1] = value; }
 	
 	//GET width and height
-	public int getWidth(){ return this.width; }
-	public int getHeight(){ return this.height; }
+	public int getWidth(){ return width; }
+	public int getHeight(){ return height; }
 }
